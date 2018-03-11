@@ -1,4 +1,15 @@
-## - reset inputs
+# Control your Denon AVR x2300w with an old phone
+
+Requirements: 
+- A Denon AVR x2300w
+- An old phone
+- Raspberry PI
+- A chip to convert the phones signal into a digital readable signal the Raspberry PI can readable
+- The Raspberry PI needs to be able to connect with the Denon AVR x2300w on Port 23 (Telnet)
+
+# Existing commands
+
+'##' - reset inputs
 
 - - - All Zone - - -
 000 - Power off all zones
@@ -16,10 +27,7 @@ XX# - Example: 42# - set the volume
 
 
 
-
-- - - - - - - - - - - - - - - - - - - - - - - - - 
-- - - - - - - - Add more commands - - - - - - - - 
-- - - - - - - - - - - - - - - - - - - - - - - - - 
+# Add more commands
 To add more commands: 
 1. Create a new command named <YOUR_COMMAND>.py
 2. <YOUR_COMMAND>.py have to be a class and implement 2 methods:
