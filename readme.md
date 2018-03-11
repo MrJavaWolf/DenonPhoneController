@@ -2,6 +2,9 @@
 
 Ever felt the need to control your Denon AVR x2300w with an old phone using the phones landline as the controller input? 
 
+![Phone pic 1](Phone_1.png)
+![Phone pic 2](Phone_2.png)
+
 # Existing commands
 
 ### Overall contols
