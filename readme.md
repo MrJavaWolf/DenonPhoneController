@@ -32,8 +32,8 @@ Ever felt the need to control your Denon AVR x2300w with an old phone using the 
 
 ### All Zone Stereo
 To play the same audio in Main Zone and Zone 2. 
-- '300' - Turn on Zone Sync
-- '301' - Turn off Zone Sync
+- '300' - Play the same audio in the Main Zone and Zone 2. 
+- '301' - Stop playing the same audio in the Main Zone and Zone 2. 
 
 # Add more commands
 1. Create a new command named <YOUR_COMMAND>.py
