@@ -53,11 +53,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="C:\Users\mrjav\Desktop\Python\DenonController\DenonController\Commands\" />
     <Folder Include="Commands\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
