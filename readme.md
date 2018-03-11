@@ -1,5 +1,8 @@
 # Control your Denon AVR x2300w with an old phone
 
+Ever felt the need to control your Denon AVR x2300w with an old phone using the phones landline as the controller input? 
+
+
 Requirements: 
 - A Denon AVR x2300w
 - An old phone
@@ -8,23 +11,32 @@ Requirements:
 - The Raspberry PI needs to be able to connect with the Denon AVR x2300w on Port 23 (Telnet)
 
 # Existing commands
-
-- '##' - reset inputs
-
-### All Zone 
+- '##' - Reset inputs
 - '000' - Power off all zones
+- '999' - Listen to all changes from the Denon (WARNING: Cannot exit this)
 
 ### Main Zone
-- 'XX#' - Example: 42# - set the volume
-- '100' - Turn on main zone
-- '101' - Turn off main zone
-- '105' - Mute on/off zone 2
+- '100' - Turn on 
+- '101' - Turn off 
+- 'XX#' - Set the volume - Example: 42#
+- '105' - Mute on/off 
+- '110' - Set source - PC (SAT/CBL)
+- '111' - Set source - ChromeCast (DVD)
+- '112' - Set source - Internet Radio
+- '113' - Set source - Lion Bluetooth (CD)
 
 ### Zone 2
-- '200' - Turn on zone 2
-- '201' - Turn off zone 2
-- '205' - Mute on/off zone 2
+- '200' - Turn on 
+- '201' - Turn off 
+- '2#XX#' - Set the volume - Example: 2#42#
+- '205' - Mute on/off 
+- '210' - Set source - Internet Radio
+- '211' - Set source - Lion Bluetooth (CD)
 
+### All Zone Stereo
+To play the same audio in Main Zone and Zone 2. 
+- '300' - Turn on Zone Sync
+- '301' - Turn off Zone Sync
 
 # Add more commands
 1. Create a new command named <YOUR_COMMAND>.py

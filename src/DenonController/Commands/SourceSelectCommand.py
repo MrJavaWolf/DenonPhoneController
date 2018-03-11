@@ -18,7 +18,7 @@ class SourceSelectCommand(object):
             print("SourceSelectCommand: Selects input source ChromeCast (DVD)")
             self.denon.SelectSourceDVD()
         elif input == "112":
-            print("SourceSelectCommand: Selects input source InternetRadio")
+            print("SourceSelectCommand: Selects input source Internet Radio")
             self.denon.SelectSourceInternetRadio()
         elif input == "113":
             print("SourceSelectCommand: Selects input source Lion Bluetooth (CD)")
