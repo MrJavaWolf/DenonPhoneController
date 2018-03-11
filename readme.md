@@ -9,21 +9,21 @@ Requirements:
 
 # Existing commands
 
-'##' - reset inputs
+- '##' - reset inputs
 
 ### All Zone 
-'000' - Power off all zones
+- '000' - Power off all zones
 
 ### Main Zone
-'XX#' - Example: 42# - set the volume
-'100' - Turn on main zone
-'101' - Turn off main zone
-'105' - Mute on/off zone 2
+- 'XX#' - Example: 42# - set the volume
+- '100' - Turn on main zone
+- '101' - Turn off main zone
+- '105' - Mute on/off zone 2
 
 ### Zone 2
-'200' - Turn on zone 2
-'201' - Turn off zone 2
-'205' - Mute on/off zone 2
+- '200' - Turn on zone 2
+- '201' - Turn off zone 2
+- '205' - Mute on/off zone 2
 
 
 # Add more commands
