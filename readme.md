@@ -2,15 +2,9 @@
 
 Ever felt the need to control your Denon AVR x2300w with an old phone using the phones landline as the controller input? 
 
-
-Requirements: 
-- A Denon AVR x2300w
-- An old phone
-- Raspberry PI
-- A chip to convert the phones signal into a digital readable signal the Raspberry PI can readable
-- The Raspberry PI needs to be able to connect with the Denon AVR x2300w on Port 23 (Telnet)
-
 # Existing commands
+
+### Overall contols
 - '##' - Reset inputs
 - '000' - Power off all zones
 - '999' - Listen to all changes from the Denon (WARNING: Cannot exit this)
@@ -51,6 +45,14 @@ To play the same audio in Main Zone and Zone 2.
 
 3. Add your new command to Start.py in the method GetCommands(...)
 4. That is it, you are finished. 
+
+# Requirements
+- A Denon AVR x2300w
+- An old phone
+- Raspberry PI
+- A chip to convert the phones signal into a digital readable signal the Raspberry PI can readable
+- The Raspberry PI needs to be able to connect with the Denon AVR x2300w on Port 23 (Telnet)
+
 
 Made by: 
 Jens 'JWolf' Larsen
