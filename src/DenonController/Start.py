@@ -27,7 +27,7 @@ translateUserInputToCommands = TranslateUserInputToCommands(commands)
 if len(sys.argv) == 1:
     userInput = UserConsoleInput()
     mainLoop = MainLoop()
-    mainLoop.Start(userInput, userInputToCommands)
+    mainLoop.Start(userInput, translateUserInputToCommands)
 
 #If there are arguments we will execute the argument and return to the commandline in a non-blocking way
 else:
