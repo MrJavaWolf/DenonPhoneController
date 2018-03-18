@@ -51,6 +51,9 @@
     <Compile Include="TranslateUserInputToCommands.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UserI2CInput.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commands\" />
