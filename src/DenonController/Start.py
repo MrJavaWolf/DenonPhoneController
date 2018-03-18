@@ -23,24 +23,27 @@ denon = DenonConnection(Denon_IP, Denon_Port)
 commands = GetCommands(denon)
 translateUserInputToCommands = TranslateUserInputToCommands(commands)
 
-#If there is no commandline arguments, we will start the mainloop and be in a "interactive mode"
-if len(sys.argv) == 1:
-    userInput = UserConsoleInput()
-    mainLoop = MainLoop()
-    mainLoop.Start(userInput, translateUserInputToCommands)
+try:
+    #If there is no commandline arguments, we will start the mainloop and be in a "interactive mode"
+    if len(sys.argv) == 1:
+        userInput = UserConsoleInput()
+        mainLoop = MainLoop()
+        mainLoop.Start(userInput, translateUserInputToCommands)
 
-#If there are arguments we will execute the argument and return to the commandline in a non-blocking way
-else:
-    translateUserInputToCommands.AddInput(sys.argv[1])
-    if translateUserInputToCommands.IsCommand():
-        command = translateUserInputToCommands.GetCommand()
-        fullUserInput = translateUserInputToCommands.GetUserInputs()
-        try:
-            command.Execute(fullUserInput)
-        except (KeyboardInterrupt, SystemExit):
-            raise
-        except Exception as e:
-            print(traceback.format_exc())
+    #If there are arguments we will execute the argument and return to the commandline in a non-blocking way
     else:
-        print("Unknown argument: '"+sys.argv[1]+"'")
-denon.Close()
+        translateUserInputToCommands.AddInput(sys.argv[1])
+        if translateUserInputToCommands.IsCommand():
+            command = translateUserInputToCommands.GetCommand()
+            fullUserInput = translateUserInputToCommands.GetUserInputs()
+            try:
+                command.Execute(fullUserInput)
+            except (KeyboardInterrupt, SystemExit):
+                raise
+            except Exception as e:
+                print(traceback.format_exc())
+        else:
+            print("Unknown argument: '"+sys.argv[1]+"'")
+
+finally:
+    denon.Close()
