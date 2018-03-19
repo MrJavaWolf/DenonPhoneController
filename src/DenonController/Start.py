@@ -2,6 +2,7 @@ import sys
 import DenonCommands
 from MainLoop import MainLoop
 from UserConsoleInput import UserConsoleInput
+from UserI2CInput import UserI2CInput
 from DenonConnection import DenonConnection 
 from TranslateUserInputToCommands import TranslateUserInputToCommands 
 from Commands import *
@@ -9,6 +10,9 @@ from Commands import *
 #Connection
 Denon_IP = '192.168.0.12'
 Denon_Port = 23 #Default port 23 (Telnet)
+
+I2C_Bus_Number = 1
+I2C_Device_Address = 0x20
 
 def GetCommands(denon):
     return [ResetInputsCommand.ResetInputsCommand(),
@@ -24,9 +28,10 @@ commands = GetCommands(denon)
 translateUserInputToCommands = TranslateUserInputToCommands(commands)
 
 try:
-    #If there is no commandline arguments, we will start the mainloop and be in a "interactive mode"
+    #If there is no commandline arguments, we will start the mainloop and be in an "interactive mode"
     if len(sys.argv) == 1:
         userInput = UserConsoleInput()
+        userI2CInput = UserI2CInput(I2C_Bus_Number, I2C_Device_Address)
         mainLoop = MainLoop()
         mainLoop.Start(userInput, translateUserInputToCommands)
 
