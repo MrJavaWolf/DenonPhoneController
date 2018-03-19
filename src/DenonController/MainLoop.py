@@ -6,8 +6,11 @@ class MainLoop:
     def Start(self, userInput, translateUserInputToCommands):
         isRunning = True
         while isRunning:
-            print("Please enter your input: " + translateUserInputToCommands.GetUserInputs(), end='')
+            print("Waiting for input... [" + translateUserInputToCommands.GetUserInputs()+"]")
+            sys.stdout.flush()
+            print("Input: ", end='')
             input = userInput.GetUserInput()
+            print(input)
             if input == "exit": 
                 return
             translateUserInputToCommands.AddInput(input)

@@ -36,7 +36,7 @@ class UserI2CInput:
                         return False
                     else:
                         containsInput = True
-        return True
+        return containsInput
 
     def IsNothingPressed(self, inputMatrix):
         containsInput = False
