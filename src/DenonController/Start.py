@@ -33,7 +33,7 @@ try:
         userInput = UserConsoleInput()
         userI2CInput = UserI2CInput(I2C_Bus_Number, I2C_Device_Address)
         mainLoop = MainLoop()
-        mainLoop.Start(userInput, translateUserInputToCommands)
+        mainLoop.Start(userI2CInput, translateUserInputToCommands)
 
     #If there are arguments we will execute the argument and return to the commandline in a non-blocking way
     else:
