@@ -23,8 +23,8 @@ class UserI2CInput:
         waitingForInput = True
         while waitingForInput:
             inputMatrix = self.ReadI2CInput()
-            if IsInputValid(inputMatrix):
-                return InputToString(inputMatrix)
+            if self.IsInputValid(inputMatrix):
+                return self.InputToString(inputMatrix)
 
     def IsInputValid(self, inputMatrix):
         containsInput = False
