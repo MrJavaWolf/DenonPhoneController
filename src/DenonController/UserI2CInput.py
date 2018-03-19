@@ -15,14 +15,14 @@ class UserI2CInput:
         time.sleep(0.05)
         waitingForClear = True
         while waitingForClear:
-            inputMatrix = self.ReadI2CInput(bus)
+            inputMatrix = self.ReadI2CInput()
             if self.IsNothingPressed(inputMatrix):
                 waitingForClear = False
         
         time.sleep(0.05)
         waitingForInput = True
         while waitingForInput:
-            inputMatrix = self.ReadI2CInput(bus)
+            inputMatrix = self.ReadI2CInput()
             if IsInputValid(inputMatrix):
                 return InputToString(inputMatrix)
 
@@ -64,7 +64,7 @@ class UserI2CInput:
         elif inputMatrix[3][3] == 1 : return "##" #I
         else: return ""
 
-    def ReadI2CInput(self, bus):
+    def ReadI2CInput(self):
         xRow = []
         yRow = []
         for i in range(3, -1, -1):
