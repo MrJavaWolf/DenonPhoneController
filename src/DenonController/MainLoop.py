@@ -7,8 +7,8 @@ class MainLoop:
         isRunning = True
         while isRunning:
             print("Waiting for input... [" + translateUserInputToCommands.GetUserInputs()+"]")
-            sys.stdout.flush()
             print("Input: ", end='')
+            sys.stdout.flush()
             input = userInput.GetUserInput()
             print(input)
             if input == "exit": 
