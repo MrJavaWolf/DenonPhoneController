@@ -89,6 +89,8 @@ class UserI2CInput:
             try:
                 self.I2C_Bus.write_byte(self.I2C_Device_Address, byte)
                 return
+            except (KeyboardInterrupt, SystemExit):
+                raise
             except:
                 if i == numberOfAttempts - 1:
                     raise
@@ -100,6 +102,8 @@ class UserI2CInput:
         for i in range(numberOfAttempts):
             try:
                 return self.I2C_Bus.read_byte(self.I2C_Device_Address)
+            except (KeyboardInterrupt, SystemExit):
+                raise
             except:
                 if i == numberOfAttempts - 1:
                     raise
