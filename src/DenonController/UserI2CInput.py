@@ -65,22 +65,45 @@ class UserI2CInput:
         else: return ""
 
     def ReadI2CInput(self):
-        xRow = []
-        yRow = []
+        rows = []
+        columns = []
         for i in range(3, -1, -1):
-            row_to_read = int(math.pow(2, i))
-            self.I2C_Bus.write_byte(self.I2C_Device_Address, row_to_read)
-            xRow.append(self.I2C_Bus.read_byte(self.I2C_Device_Address))
+            row = int(math.pow(2, i))
+            self.WriteI2CByte(row)
+            rows.append(self.ReadI2CByte())
         for i in range(4):
-            row_to_read = int(math.pow(2, i + 4))
-            self.I2C_Bus.write_byte(self.I2C_Device_Address, row_to_read)
-            yRow.append(self.I2C_Bus.read_byte(self.I2C_Device_Address))
+            column = int(math.pow(2, i + 4))
+            self.WriteI2CByte(column)
+            columns.append(self.ReadI2CByte())
 
         inputMatrix = [[0 for y in range(4)] for x in range(4)]
-        for y in range(4):
-            for x in range(4):
-                if xRow[x] == 0 and yRow[y] == 0:
-                    inputMatrix[y][x] = int(1)
+        for i in range(len(rows)):
+            for j in range(len(columns)):
+                if rows[j] == 0 and columns[i] == 0:
+                    inputMatrix[i][j] = int(1)
         return inputMatrix
+
+    def WriteI2CByte(self, byte):
+        numberOfAttempts = 5
+        for i in range(numberOfAttempts):
+            try:
+                self.I2C_Bus.write_byte(self.I2C_Device_Address, byte)
+                return
+            except:
+                if i == numberOfAttempts - 1:
+                    raise
+                else:
+                    time.sleep(0.05)
+
+    def ReadI2CByte(self):
+        numberOfAttempts = 5
+        for i in range(numberOfAttempts):
+            try:
+                return self.I2C_Bus.read_byte(self.I2C_Device_Address)
+            except:
+                if i == numberOfAttempts - 1:
+                    raise
+                else:
+                    time.sleep(0.05)
 
 
