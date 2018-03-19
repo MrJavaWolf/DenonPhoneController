@@ -10,7 +10,7 @@ I2C_BUS = 1
 DEVICE_ADDRESS = 0x20 #7 bit address (will be left shifted to add the read write bit)
 w, h = 4, 4
 print("Setting up the bus...")
-bus = smbus.SMBus(I2C_BUS_NUMBER) 
+bus = smbus.SMBus(I2C_BUS) 
 Matrix = [[0 for x in range(w)] for y in range(h)]
 result_x[4]
 result_y[4]
