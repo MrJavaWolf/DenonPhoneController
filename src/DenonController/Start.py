@@ -6,6 +6,9 @@ from UserI2CInput import UserI2CInput
 from DenonConnection import DenonConnection 
 from TranslateUserInputToCommands import TranslateUserInputToCommands 
 from Commands import *
+import ptvsd
+
+ptvsd.enable_attach(secret='debug')
 
 #Connection
 Denon_IP = '192.168.0.12'
