@@ -14,7 +14,8 @@ Ever felt the need to control your Denon AVR x2300w with an old phone using the 
 ### Main Zone
 - '100*' - Turn on 
 - '101*' - Turn off 
-- 'XX*' - Set the volume - Example: 42#
+- 'XX*' - Set the volume - Example: 42*
+- '11XX*' - Set the volume - Example: 1142*
 - '105*' - Mute on/off 
 - '110*' - Set source - PC (SAT/CBL)
 - '111*' - Set source - ChromeCast (DVD)
@@ -24,7 +25,7 @@ Ever felt the need to control your Denon AVR x2300w with an old phone using the 
 ### Zone 2
 - '200*' - Turn on 
 - '201*' - Turn off 
-- '2*XX*' - Set the volume - Example: 2#42#
+- '22XX*' - Set the volume - Example: 2242*
 - '205*' - Mute on/off 
 - '210*' - Set source - Internet Radio
 - '211*' - Set source - Lion Bluetooth (CD)
