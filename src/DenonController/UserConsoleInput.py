@@ -1,3 +1,5 @@
+import sys
+
 class UserConsoleInput:
 
     def GetUserInput(self):

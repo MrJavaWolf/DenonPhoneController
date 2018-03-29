@@ -1,3 +1,4 @@
+import sys
 
 class ListenCommand:
     def __init__(self, denon):

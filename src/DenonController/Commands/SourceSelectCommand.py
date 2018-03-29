@@ -1,4 +1,6 @@
 import re
+import sys
+
 class SourceSelectCommand(object):
     def __init__(self, denon):
         self.denon = denon

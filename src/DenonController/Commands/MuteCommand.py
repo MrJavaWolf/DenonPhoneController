@@ -1,3 +1,5 @@
+import sys
+
 class MuteCommand(object):
 
     def __init__(self, denon):

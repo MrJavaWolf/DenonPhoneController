@@ -1,3 +1,5 @@
+import sys
+
 class PowerCommand:
 
     def __init__(self, denon):

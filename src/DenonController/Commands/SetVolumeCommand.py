@@ -1,4 +1,6 @@
 import re
+import sys
+
 class SetVolumeCommand:
 
     def __init__(self, denon):
