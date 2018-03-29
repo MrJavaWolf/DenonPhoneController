@@ -63,7 +63,7 @@ class LedController:
         self.OneTimeBlink(self.RedLed, 0.5)
 
     def InvalidCommand(self):
-        sleeptime = 0.075
+        sleepTime = 0.075
         for i in range(0, 3):
             GPIO.output(self.GreenLed, GPIO.HIGH)
             GPIO.output(self.RedLed, GPIO.HIGH)
