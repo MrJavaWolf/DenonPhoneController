@@ -45,7 +45,7 @@ try:
     if len(sys.argv) == 1:
         userI2CInput = UserI2CInput(I2C_Bus_Number, I2C_Device_Address, ledController)
         mainLoop = MainLoop()
-        mainLoop.Start(userI2CInput, translateUserInputToCommands)
+        mainLoop.Start(userI2CInput, translateUserInputToCommands, ledController)
 
 
     #If there are arguments we will execute the argument and return to the
@@ -56,6 +56,7 @@ try:
             command = translateUserInputToCommands.GetCommand()
             fullUserInput = translateUserInputToCommands.GetUserInputs()
             try:
+                ledController.CommandExecuted()
                 command.Execute(fullUserInput)
             except (KeyboardInterrupt, SystemExit):
                 raise

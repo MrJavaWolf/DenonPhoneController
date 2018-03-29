@@ -3,7 +3,7 @@ import traceback
 
 class MainLoop:
 
-    def Start(self, userInput, translateUserInputToCommands):
+    def Start(self, userInput, translateUserInputToCommands, ledController):
         isRunning = True
         while isRunning:
             print("Waiting for input... [" + translateUserInputToCommands.GetUserInputs()+"]")
@@ -19,6 +19,7 @@ class MainLoop:
                 fullUserInput = translateUserInputToCommands.GetUserInputs()
                 translateUserInputToCommands.Reset()
                 try:
+                    ledController.CommandExecuted()
                     command.Execute(fullUserInput)
                 except (KeyboardInterrupt, SystemExit):
                     raise

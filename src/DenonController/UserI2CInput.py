@@ -11,6 +11,8 @@ class UserI2CInput:
         self.I2C_Bus_Number = I2C_Bus_Number
         self.ledController = ledController
         self.I2C_Bus = smbus.SMBus(I2C_Bus_Number) 
+        self.HeartBeatTime = 2.5
+        self.LastHeartBeatTime = int(round(time.time() * 1000))
 
     def GetUserInput(self):
         time.sleep(0.05)
@@ -23,6 +25,11 @@ class UserI2CInput:
         time.sleep(0.05)
         waitingForInput = True
         while waitingForInput:
+            currentTime = int(round(time.time() * 1000))
+            if currentTime - self.HeartBeatTime > self.LastHeartBeatTime:
+                self.LastHeartBeatTime = currentTime
+                self.ledController.HeartBeat()
+
             inputMatrix = self.ReadI2CInput()
             if self.IsInputValid(inputMatrix):
                 self.ledController.InputRead()
@@ -85,31 +92,26 @@ class UserI2CInput:
                     inputMatrix[i][j] = int(1)
         return inputMatrix
 
+
     def WriteI2CByte(self, byte):
-        numberOfAttempts = 5
-        for i in range(numberOfAttempts):
+        while True:
             try:
                 self.I2C_Bus.write_byte(self.I2C_Device_Address, byte)
                 return
             except (KeyboardInterrupt, SystemExit):
                 raise
             except:
-                if i == numberOfAttempts - 1:
-                    raise
-                else:
-                    time.sleep(0.05)
+                self.ledController.Error()
+                time.sleep(3)
 
     def ReadI2CByte(self):
-        numberOfAttempts = 5
-        for i in range(numberOfAttempts):
+        while True:
             try:
                 return self.I2C_Bus.read_byte(self.I2C_Device_Address)
             except (KeyboardInterrupt, SystemExit):
                 raise
             except:
-                if i == numberOfAttempts - 1:
-                    raise
-                else:
-                    time.sleep(0.05)
+                self.ledController.Error()
+                time.sleep(3)
 
 
