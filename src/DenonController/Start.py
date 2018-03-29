@@ -20,7 +20,7 @@ Denon_Port = 23 #Default port 23 (Telnet)
 I2C_Bus_Number = 1
 I2C_Device_Address = 0x20
 
-#Leds 
+#Leds
 Gpio_Mode = GPIO.BOARD
 Led_Green = 16
 Led_Red = 12
@@ -39,16 +39,17 @@ commands = GetCommands(denon)
 translateUserInputToCommands = TranslateUserInputToCommands(commands)
 
 try:
-    #If there is no commandline arguments, we will start the mainloop and be in an "interactive mode"
+    #If there is no commandline arguments, we will start the mainloop and be in
+    #an "interactive mode"
     if len(sys.argv) == 1:
-        userInput = UserConsoleInput()
         ledController = LedController(Gpio_Mode, Led_Green, Led_Red)
-        userI2CInput = UserI2CInput(I2C_Bus_Number, I2C_Device_Address)
+        userI2CInput = UserI2CInput(I2C_Bus_Number, I2C_Device_Address, ledController)
         mainLoop = MainLoop()
         mainLoop.Start(userI2CInput, translateUserInputToCommands)
 
 
-    #If there are arguments we will execute the argument and return to the commandline in a non-blocking way
+    #If there are arguments we will execute the argument and return to the
+    #commandline in a non-blocking way
     else:
         translateUserInputToCommands.AddInput(sys.argv[1])
         if translateUserInputToCommands.IsCommand():
@@ -61,7 +62,7 @@ try:
             except Exception as e:
                 print(traceback.format_exc())
         else:
-            print("Unknown argument: '"+sys.argv[1]+"'")
+            print("Unknown argument: '" + sys.argv[1] + "'")
 
 finally:
     denon.Close()
