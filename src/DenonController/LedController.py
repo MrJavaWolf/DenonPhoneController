@@ -11,7 +11,7 @@ class LedController:
         GPIO.setwarnings(False)
         GPIO.setup(self.GreenLed , GPIO.OUT)
         GPIO.setup(self.RedLed , GPIO.OUT)
-        self.stopWorkerThread = False;
+        self.stopWorkerThread = False
         self.Execute = None
         self.ExecuteCounter = 0
         workerThread = threading.Thread(target=self.StartWorkerTread)
@@ -44,11 +44,9 @@ class LedController:
         self.UpdateExecuteCounter()
 
     def CommandExecutedBlocking(self):
-        self.OneTimeBlink(self.GreenLed, 0.075)
-        time.sleep(0.075)
-        self.OneTimeBlink(self.GreenLed, 0.075)
-        time.sleep(0.075)
-        self.OneTimeBlink(self.GreenLed, 0.075)
+        for i in range(0, 3):
+            self.OneTimeBlink(self.GreenLed, 0.075)
+            time.sleep(0.075)
 
     def HeartBeat(self):
         self.Execute = self.HeartBeatBlocking
@@ -64,6 +62,16 @@ class LedController:
     def ErrorBlocking(self):
         self.OneTimeBlink(self.RedLed, 0.5)
 
+    def InvalidCommand(self):
+        sleeptime = 0.075
+        for i in range(0, 3):
+            GPIO.output(self.GreenLed, GPIO.HIGH)
+            GPIO.output(self.RedLed, GPIO.HIGH)
+            time.sleep(sleepTime)
+            GPIO.output(self.GreenLed, GPIO.LOW)
+            GPIO.output(self.RedLed, GPIO.LOW)
+            time.sleep(sleepTime)
+    
     def OneTimeBlink(self, led, sleepTime):
         GPIO.output(led, GPIO.HIGH)
         time.sleep(sleepTime)

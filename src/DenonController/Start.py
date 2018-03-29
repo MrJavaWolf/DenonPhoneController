@@ -25,19 +25,21 @@ Gpio_Mode = GPIO.BOARD
 Led_Green = 16
 Led_Red = 12
 
-def GetCommands(denon):
+def GetCommands(denon, ledController):
     return [ResetInputsCommand.ResetInputsCommand(),
             #ListenCommand.ListenCommand(denon),
             SetVolumeCommand.SetVolumeCommand(denon),
             PowerCommand.PowerCommand(denon),
             MuteCommand.MuteCommand(denon),
-            SourceSelectCommand.SourceSelectCommand(denon)]
+            SourceSelectCommand.SourceSelectCommand(denon),
+            InvalidCommand.InvalidCommand(ledController)]
 
 print("Welcome to JWolf's Denon controls!")
 denon = DenonConnection(Denon_IP, Denon_Port)
-commands = GetCommands(denon)
-translateUserInputToCommands = TranslateUserInputToCommands(commands)
 ledController = LedController(Gpio_Mode, Led_Green, Led_Red)
+
+commands = GetCommands(denon, ledController)
+translateUserInputToCommands = TranslateUserInputToCommands(commands)
 
 try:
     #If there is no commandline arguments, we will start the mainloop and be in

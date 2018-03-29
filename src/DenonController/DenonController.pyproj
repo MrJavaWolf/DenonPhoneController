@@ -24,6 +24,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\InvalidCommand.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Commands\ListenCommand.py">
       <SubType>Code</SubType>
     </Compile>

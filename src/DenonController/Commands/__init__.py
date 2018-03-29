@@ -1,1 +1,1 @@
-__all__ = ["ResetInputsCommand", "SetVolumeCommand", "PowerCommand", "MuteCommand", "SourceSelectCommand", "ListenCommand"]
+__all__ = ["ResetInputsCommand", "InvalidCommand", "SetVolumeCommand", "PowerCommand", "MuteCommand", "SourceSelectCommand", "ListenCommand"]
