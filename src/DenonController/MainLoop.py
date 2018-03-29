@@ -7,7 +7,7 @@ class MainLoop:
         isRunning = True
         while isRunning:
             sys.stdout.write("Waiting for input... [" + translateUserInputToCommands.GetUserInputs()+"]\n")
-            sys.stdout.write("Input: ", end='')
+            sys.stdout.write("Input: ")
             sys.stdout.flush()
             input = userInput.GetUserInput()
             sys.stdout.write(input)
