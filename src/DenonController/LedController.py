@@ -84,6 +84,7 @@ class LedController:
         self.OneTimeBlink(self.RedLed, 0.7)
         for i in range(0, 5):
             self.OneTimeBlink(self.GreenLed, 0.1)
+            time.sleep(0.1)
 
     def OneTimeBlink(self, led, sleepTime):
         GPIO.output(led, GPIO.HIGH)
