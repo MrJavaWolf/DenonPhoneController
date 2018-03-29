@@ -70,7 +70,7 @@ class UserI2CInput:
         elif inputMatrix[3][0] == 1 : return "#" # <--
         elif inputMatrix[3][1] == 1 : return "0"
         elif inputMatrix[3][2] == 1 : return "#" # -->
-        elif inputMatrix[3][3] == 1 : return "##" #I
+        elif inputMatrix[3][3] == 1 : return "*" #I
         else: return ""
 
     def ReadI2CInput(self):

@@ -9,30 +9,30 @@ Ever felt the need to control your Denon AVR x2300w with an old phone using the 
 
 ### Overall contols
 - '##' - Reset inputs
-- '000' - Power off all zones
+- '000*' - Power off all zones
 
 ### Main Zone
-- '100' - Turn on 
-- '101' - Turn off 
-- 'XX#' - Set the volume - Example: 42#
-- '105' - Mute on/off 
-- '110' - Set source - PC (SAT/CBL)
-- '111' - Set source - ChromeCast (DVD)
-- '112' - Set source - Internet Radio
-- '113' - Set source - Lion Bluetooth (CD)
+- '100*' - Turn on 
+- '101*' - Turn off 
+- 'XX*' - Set the volume - Example: 42#
+- '105*' - Mute on/off 
+- '110*' - Set source - PC (SAT/CBL)
+- '111*' - Set source - ChromeCast (DVD)
+- '112*' - Set source - Internet Radio
+- '113*' - Set source - Lion Bluetooth (CD)
 
 ### Zone 2
-- '200' - Turn on 
-- '201' - Turn off 
-- '2#XX#' - Set the volume - Example: 2#42#
-- '205' - Mute on/off 
-- '210' - Set source - Internet Radio
-- '211' - Set source - Lion Bluetooth (CD)
+- '200*' - Turn on 
+- '201*' - Turn off 
+- '2*XX*' - Set the volume - Example: 2#42#
+- '205*' - Mute on/off 
+- '210*' - Set source - Internet Radio
+- '211*' - Set source - Lion Bluetooth (CD)
 
 ### All Zone Stereo
 To play the same audio in Main Zone and Zone 2. 
-- '300' - Play the same audio in the Main Zone and Zone 2. 
-- '301' - Stop playing the same audio in the Main Zone and Zone 2. 
+- '300*' - Play the same audio in the Main Zone and Zone 2. 
+- '301*' - Stop playing the same audio in the Main Zone and Zone 2. 
 
 # Add more commands
 1. Create a new command named <YOUR_COMMAND>.py

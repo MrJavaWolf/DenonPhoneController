@@ -4,7 +4,7 @@ class ListenCommand:
         self.denon = denon
 
     def CanExecute(self, input):
-        if input == "999":
+        if input == "999*":
             return True
         else:
             return False
