@@ -18,7 +18,7 @@ class SetVolumeCommand:
         if re.search(regexMainZoneShort, input) or re.search(regexMainZoneLong, input) :
             newVolume = 0
             if re.search(regexMainZoneShort, input):
-                newVolume = input[-1]
+                newVolume = input[0:-1]
             elif re.search(regexMainZoneLong, input):
                 newVolume = input[2:-1]
             print("VolumeCommand: Changes the main zone volume to: " + newVolume)

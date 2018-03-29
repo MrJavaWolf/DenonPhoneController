@@ -11,7 +11,7 @@ class UserI2CInput:
         self.I2C_Bus_Number = I2C_Bus_Number
         self.ledController = ledController
         self.I2C_Bus = smbus.SMBus(I2C_Bus_Number) 
-        self.HeartBeatTimeMs = 2500
+        self.HeartBeatTimeMs = 7500
         self.LastHeartBeatTime = int(round(time.time() * 1000))
 
     def GetUserInput(self):
