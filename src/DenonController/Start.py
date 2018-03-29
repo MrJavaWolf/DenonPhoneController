@@ -38,7 +38,7 @@ sys.stdout.write("Welcome to JWolf's Denon controls!\n")
 sys.stdout.flush()
 denon = DenonConnection(Denon_IP, Denon_Port)
 ledController = LedController(Gpio_Mode, Led_Green, Led_Red)
-
+ledController.SystemStart()
 commands = GetCommands(denon, ledController)
 translateUserInputToCommands = TranslateUserInputToCommands(commands)
 

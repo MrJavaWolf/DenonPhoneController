@@ -63,6 +63,10 @@ class LedController:
         self.OneTimeBlink(self.RedLed, 0.5)
 
     def InvalidCommand(self):
+        self.Execute = self.InvalidCommandBlocking
+        self.UpdateExecuteCounter()
+
+    def InvalidCommandBlocking(self):
         sleepTime = 0.075
         for i in range(0, 3):
             GPIO.output(self.GreenLed, GPIO.HIGH)
@@ -71,7 +75,16 @@ class LedController:
             GPIO.output(self.GreenLed, GPIO.LOW)
             GPIO.output(self.RedLed, GPIO.LOW)
             time.sleep(sleepTime)
-    
+
+    def SystemStart(self):
+        self.Execute = self.SystemStartBlocking
+        self.UpdateExecuteCounter()
+
+    def SystemStartBlocking(self):
+        OneTimeBlink(self.RedLed, 0.7)
+        for i in range(0, 5):
+            OneTimeBlink(self.GreenLed, 0.1)
+
     def OneTimeBlink(self, led, sleepTime):
         GPIO.output(led, GPIO.HIGH)
         time.sleep(sleepTime)
