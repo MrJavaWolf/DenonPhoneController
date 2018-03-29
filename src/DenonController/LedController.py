@@ -29,8 +29,13 @@ class LedController:
     def UpdateExecuteCounter(self):
         self.ExecuteCounter = self.ExecuteCounter + 1 
 
-    def Close():
+    def Close(self):
         self.stopWorkerThread = True
+    
+    def OneTimeBlink(self, led, sleepTime):
+        GPIO.output(led, GPIO.HIGH)
+        time.sleep(sleepTime)
+        GPIO.output(led, GPIO.LOW)
 
     def InputRead(self):
         self.Execute = self.InputReadBlocking
@@ -85,8 +90,3 @@ class LedController:
         for i in range(0, 5):
             self.OneTimeBlink(self.GreenLed, 0.1)
             time.sleep(0.1)
-
-    def OneTimeBlink(self, led, sleepTime):
-        GPIO.output(led, GPIO.HIGH)
-        time.sleep(sleepTime)
-        GPIO.output(led, GPIO.LOW)
