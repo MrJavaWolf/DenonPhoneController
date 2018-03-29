@@ -11,18 +11,23 @@ class PowerCommand:
 
     def Execute(self, input):
         if input == "000*":
-            print("PowerCommand: Turns off the all zones")
+            sys.stdout.write("PowerCommand: Turns off the all zones\n")
+            sys.stdout.flush()
             self.denon.Zone2PowerOff()
             self.denon.PowerOff()
         elif input == "100*":
-            print("PowerCommand: Turns on the main zone")
+            sys.stdout.write("PowerCommand: Turns on the main zone\n")
+            sys.stdout.flush()
             self.denon.PowerOn()
         elif input == "101*":
-            print("PowerCommand: Turns off the main zone")
+            sys.stdout.write("PowerCommand: Turns off the main zone\n")
+            sys.stdout.flush()
             self.denon.PowerOff()
         elif input == "200*":
-            print("PowerCommand: Turns on the zone2")
+            sys.stdout.write("PowerCommand: Turns on the zone2\n")
+            sys.stdout.flush()
             self.denon.Zone2PowerOn()
         elif input == "201*":
-            print("PowerCommand: Turns off the zone2")
+            sys.stdout.write("PowerCommand: Turns off the zone2\n")
+            sys.stdout.flush()
             self.denon.Zone2PowerOff()

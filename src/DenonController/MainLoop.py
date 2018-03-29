@@ -6,11 +6,13 @@ class MainLoop:
     def Start(self, userInput, translateUserInputToCommands, ledController):
         isRunning = True
         while isRunning:
-            print("Waiting for input... [" + translateUserInputToCommands.GetUserInputs()+"]")
-            print("Input: ", end='')
+            sys.stdout.write("Waiting for input... [" + translateUserInputToCommands.GetUserInputs()+"]\n")
+            sys.stdout.write("Input: ", end='')
             sys.stdout.flush()
             input = userInput.GetUserInput()
-            print(input)
+            sys.stdout.write(input)
+            sys.stdout.write("\n")
+            sys.stdout.flush()
             if input == "exit": 
                 return
             translateUserInputToCommands.AddInput(input)
@@ -24,5 +26,7 @@ class MainLoop:
                 except (KeyboardInterrupt, SystemExit):
                     raise
                 except Exception as e:
-                    print(traceback.format_exc())
+                    sys.stdout.write(traceback.format_exc())
+                    sys.stdout.write("\n")
+                    sys.stdout.flush()
                     

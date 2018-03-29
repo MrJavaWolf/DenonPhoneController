@@ -9,7 +9,8 @@ class InvalidCommand:
             return False
 
     def Execute(self, input):
-        print("Invalid command")
+        sys.stdout.write("Invalid command\n")
+        sys.stdout.flush()
         self.ledController.InvalidCommand()
 
 

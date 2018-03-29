@@ -10,8 +10,12 @@ class ListenCommand:
             return False
 
     def Execute(self, input):
-        print("ListenCommand: Will listen forever...")
+        sys.stdout.write("ListenCommand: Will listen forever...\n")
+        sys.stdout.flush()
+
         while True:
             responseBytes = self.denon.WaitForResponse(["\r"])
             response = responseBytes.decode("ascii")
-            print(response)
+            sys.stdout.write(response)
+            sys.stdout.write("\n")
+            sys.stdout.flush()

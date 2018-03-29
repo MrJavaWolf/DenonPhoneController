@@ -21,12 +21,14 @@ class SetVolumeCommand:
                 newVolume = input[0:-1]
             elif re.search(regexMainZoneLong, input):
                 newVolume = input[2:-1]
-            print("VolumeCommand: Changes the main zone volume to: " + newVolume)
+            sys.stdout.write("VolumeCommand: Changes the main zone volume to: " + newVolume + "\n")
+            sys.stdout.flush()
             self.denon.SetMasterVolume(newVolume)
 
         elif re.search(regexZone2, input):
             newVolume = input[2:-1]
-            print("VolumeCommand: Changes the zone 2 volume to: " + newVolume)
+            sys.stdout.write("VolumeCommand: Changes the zone 2 volume to: " + newVolume + "\n")
+            sys.stdout.flush()
             self.denon.SetZone2Volume(newVolume)
 
        

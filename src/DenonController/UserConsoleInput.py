@@ -9,7 +9,8 @@ class UserConsoleInput:
         return userInput
 
     def ShowValidInputsToUser(self):
-        print("Please provide an valid input. Valid inputs are: 0-9, * and #")
+        sys.stdout.write("Please provide an valid input. Valid inputs are: 0-9, * and #\n")
+        sys.stdout.flush()
 
     def IsValidUserInput(self, userInput):
         if not userInput:

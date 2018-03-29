@@ -34,7 +34,8 @@ def GetCommands(denon, ledController):
             SourceSelectCommand.SourceSelectCommand(denon),
             InvalidCommand.InvalidCommand(ledController)]
 
-print("Welcome to JWolf's Denon controls!")
+sys.stdout.write("Welcome to JWolf's Denon controls!\n")
+sys.stdout.flush()
 denon = DenonConnection(Denon_IP, Denon_Port)
 ledController = LedController(Gpio_Mode, Led_Green, Led_Red)
 
@@ -63,9 +64,12 @@ try:
             except (KeyboardInterrupt, SystemExit):
                 raise
             except Exception as e:
-                print(traceback.format_exc())
+                sys.stdout.write(traceback.format_exc())
+                sys.stdout.flush()
+
         else:
-            print("Unknown argument: '" + sys.argv[1] + "'")
+            sys.stdout.write("Unknown argument: '" + sys.argv[1] + "'\n")
+            sys.stdout.flush()
 
 finally:
     denon.Close()

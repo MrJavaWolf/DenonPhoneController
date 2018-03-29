@@ -12,26 +12,34 @@ class SourceSelectCommand(object):
 
     def Execute(self, input):
         if input == "110*":
-            print("SourceSelectCommand: Selects input source PC (SAT/CBL)")
+            sys.stdout.write("SourceSelectCommand: Selects input source PC (SAT/CBL)\n")
+            sys.stdout.flush()
             self.denon.SelectSourceSATCBL()
         elif input == "111*":
-            print("SourceSelectCommand: Selects input source ChromeCast (DVD)")
+            sys.stdout.write("SourceSelectCommand: Selects input source ChromeCast (DVD)\n")
+            sys.stdout.flush()
             self.denon.SelectSourceDVD()
         elif input == "112*":
-            print("SourceSelectCommand: Selects input source Internet Radio")
+            sys.stdout.write("SourceSelectCommand: Selects input source Internet Radio\n")
+            sys.stdout.flush()
             self.denon.SelectSourceInternetRadio()
         elif input == "113*":
-            print("SourceSelectCommand: Selects input source Lion Bluetooth (CD)")
+            sys.stdout.write("SourceSelectCommand: Selects input source Lion Bluetooth (CD)\n")
+            sys.stdout.flush()
             self.denon.SelectSourceCD()
         elif input == "210*":
-            print("SourceSelectCommand: Selects input source zone 2 InternetRadio")
+            sys.stdout.write("SourceSelectCommand: Selects input source zone 2 InternetRadio\n")
+            sys.stdout.flush()
             self.denon.Zone2_SelectSourceInternetRadio()
         elif input == "211*":
-            print("SourceSelectCommand: Selects input source zone 2 Lion Bluetooth (CD)")
+            sys.stdout.write("SourceSelectCommand: Selects input source zone 2 Lion Bluetooth (CD)\n")
+            sys.stdout.flush()
             self.denon.Zone2_SelectSourceCD()
         elif input == "300*":
-            print("SourceSelectCommand: Selects input source zone 2 - same as Main zone")
+            sys.stdout.write("SourceSelectCommand: Selects input source zone 2 - same as Main zone\n")
+            sys.stdout.flush()
             self.denon.Zone2_SelectSourceSyncWithMainZone()
         elif input == "301*":
-            print("SourceSelectCommand: Selects input source zone 2 and Main zone is no longer the same")
+            sys.stdout.write("SourceSelectCommand: Selects input source zone 2 and Main zone is no longer the same\n")
+            sys.stdout.flush()
             self.denon.Zone2_SelectSourceUnsyncWithMainZone()

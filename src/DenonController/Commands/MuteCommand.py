@@ -11,19 +11,25 @@ class MuteCommand(object):
 
     def Execute(self, input):
         if input == "105*":
-            print("MuteCommand: Toggles main zone mute")
+            sys.stdout.write("MuteCommand: Toggles main zone mute\n")
+            sys.stdout.flush()
             if self.denon.IsMuted():
-                print("MuteCommand: Main zone mute off")
+                sys.stdout.write("MuteCommand: Main zone mute off\n")
+                sys.stdout.flush()
                 self.denon.MuteOff()
             else:
-                print("MuteCommand: Main zone mute on")
+                sys.stdout.write("MuteCommand: Main zone mute on\n")
+                sys.stdout.flush()
                 self.denon.MuteOn()
         elif input == "205*":
-            print("MuteCommand: Toggles zone2 mute")
+            sys.stdout.write("MuteCommand: Toggles zone2 mute\n")
+            sys.stdout.flush()
             if self.denon.Zone2IsMuted():
-                print("MuteCommand: Main zone mute off")
+                sys.stdout.write("MuteCommand: Main zone mute off\n")
+                sys.stdout.flush()
                 self.denon.Zone2MuteOff()
             else:
-                print("MuteCommand: Main zone mute on")
+                sys.stdout.write("MuteCommand: Main zone mute on\n")
+                sys.stdout.flush()
                 self.denon.Zone2MuteOn()
             
