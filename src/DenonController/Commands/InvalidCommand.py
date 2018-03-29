@@ -10,6 +10,6 @@ class InvalidCommand:
 
     def Execute(self, input):
         print("Invalid command")
-        ledController.InvalidCommand()
+        self.ledController.InvalidCommand()
 
 
