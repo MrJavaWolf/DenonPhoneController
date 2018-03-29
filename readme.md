@@ -10,7 +10,6 @@ Ever felt the need to control your Denon AVR x2300w with an old phone using the 
 ### Overall contols
 - '##' - Reset inputs
 - '000' - Power off all zones
-- '999' - Listen to all changes from the Denon (WARNING: Cannot exit this)
 
 ### Main Zone
 - '100' - Turn on 

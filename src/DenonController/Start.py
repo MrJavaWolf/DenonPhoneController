@@ -27,11 +27,11 @@ Led_Red = 12
 
 def GetCommands(denon):
     return [ResetInputsCommand.ResetInputsCommand(),
+            #ListenCommand.ListenCommand(denon),
             SetVolumeCommand.SetVolumeCommand(denon),
             PowerCommand.PowerCommand(denon),
             MuteCommand.MuteCommand(denon),
-            SourceSelectCommand.SourceSelectCommand(denon),
-            ListenCommand.ListenCommand(denon)]
+            SourceSelectCommand.SourceSelectCommand(denon)]
 
 print("Welcome to JWolf's Denon controls!")
 denon = DenonConnection(Denon_IP, Denon_Port)
