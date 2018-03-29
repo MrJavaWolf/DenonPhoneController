@@ -43,6 +43,9 @@
     </Compile>
     <Compile Include="DenonCommands.py" />
     <Compile Include="DenonConnection.py" />
+    <Compile Include="LedController.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MainLoop.py">
       <SubType>Code</SubType>
     </Compile>

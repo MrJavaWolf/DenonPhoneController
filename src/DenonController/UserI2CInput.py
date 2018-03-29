@@ -6,9 +6,10 @@ import time
 
 class UserI2CInput:
 
-    def __init__(self, I2C_Bus_Number, I2C_Device_Address):
+    def __init__(self, I2C_Bus_Number, I2C_Device_Address, ledController):
         self.I2C_Device_Address = I2C_Device_Address
         self.I2C_Bus_Number = I2C_Bus_Number
+        self.ledController = ledController
         self.I2C_Bus = smbus.SMBus(I2C_Bus_Number) 
 
     def GetUserInput(self):
@@ -24,6 +25,7 @@ class UserI2CInput:
         while waitingForInput:
             inputMatrix = self.ReadI2CInput()
             if self.IsInputValid(inputMatrix):
+                ledController.InputRead()
                 return self.InputToString(inputMatrix)
 
     def IsInputValid(self, inputMatrix):
