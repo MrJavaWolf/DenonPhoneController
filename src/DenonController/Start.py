@@ -37,12 +37,12 @@ print("Welcome to JWolf's Denon controls!")
 denon = DenonConnection(Denon_IP, Denon_Port)
 commands = GetCommands(denon)
 translateUserInputToCommands = TranslateUserInputToCommands(commands)
+ledController = LedController(Gpio_Mode, Led_Green, Led_Red)
 
 try:
     #If there is no commandline arguments, we will start the mainloop and be in
     #an "interactive mode"
     if len(sys.argv) == 1:
-        ledController = LedController(Gpio_Mode, Led_Green, Led_Red)
         userI2CInput = UserI2CInput(I2C_Bus_Number, I2C_Device_Address, ledController)
         mainLoop = MainLoop()
         mainLoop.Start(userI2CInput, translateUserInputToCommands)
@@ -66,3 +66,4 @@ try:
 
 finally:
     denon.Close()
+    ledController.Close()
