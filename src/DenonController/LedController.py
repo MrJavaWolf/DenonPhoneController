@@ -81,9 +81,9 @@ class LedController:
         self.UpdateExecuteCounter()
 
     def SystemStartBlocking(self):
-        OneTimeBlink(self.RedLed, 0.7)
+        self.OneTimeBlink(self.RedLed, 0.7)
         for i in range(0, 5):
-            OneTimeBlink(self.GreenLed, 0.1)
+            self.OneTimeBlink(self.GreenLed, 0.1)
 
     def OneTimeBlink(self, led, sleepTime):
         GPIO.output(led, GPIO.HIGH)
