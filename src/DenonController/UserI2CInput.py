@@ -25,7 +25,7 @@ class UserI2CInput:
         while waitingForInput:
             inputMatrix = self.ReadI2CInput()
             if self.IsInputValid(inputMatrix):
-                ledController.InputRead()
+                self.ledController.InputRead()
                 return self.InputToString(inputMatrix)
 
     def IsInputValid(self, inputMatrix):
