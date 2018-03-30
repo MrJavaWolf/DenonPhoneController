@@ -7,7 +7,7 @@ class SourceSelectCommand(object):
 
     def CanExecute(self, input):
         regex = r"\A(11[0-9]\*|21[0-9]\*|300\*|301\*)"
-        if re.search(regex, input) and len(input) == 3:
+        if re.search(regex, input) and len(input) == 4:
             return True
         else:
             return False
