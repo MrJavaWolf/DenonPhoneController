@@ -44,34 +44,33 @@ try:
     commands = GetCommands(denon, ledController)
     translateUserInputToCommands = TranslateUserInputToCommands(commands)
 
-    try:
-        #If there is no commandline arguments, we will start the mainloop and be in
-        #an "interactive mode"
-        if len(sys.argv) == 1:
-            userI2CInput = UserI2CInput(I2C_Bus_Number, I2C_Device_Address, ledController.ErrorCode2)
-            mainLoop = MainLoop()
-            mainLoop.Start(userI2CInput, translateUserInputToCommands, ledController)
+    #If there is no commandline arguments, we will start the mainloop and be in
+    #an "interactive mode"
+    if len(sys.argv) == 1:
+        userI2CInput = UserI2CInput(I2C_Bus_Number, I2C_Device_Address, ledController.ErrorCode2)
+        mainLoop = MainLoop()
+        mainLoop.Start(userI2CInput, translateUserInputToCommands, ledController)
 
 
-        #If there are arguments we will execute the argument and return to the
-        #commandline in a non-blocking way
-        else:
-            translateUserInputToCommands.AddInput(sys.argv[1])
-            if translateUserInputToCommands.IsCommand():
-                command = translateUserInputToCommands.GetCommand()
-                fullUserInput = translateUserInputToCommands.GetUserInputs()
-                try:
-                    ledController.CommandExecuted()
-                    command.Execute(fullUserInput)
-                except (KeyboardInterrupt, SystemExit):
-                    raise
-                except Exception as e:
-                    sys.stdout.write(traceback.format_exc())
-                    sys.stdout.flush()
-
-            else:
-                sys.stdout.write("Unknown argument: '" + sys.argv[1] + "'\n")
+    #If there are arguments we will execute the argument and return to the
+    #commandline in a non-blocking way
+    else:
+        translateUserInputToCommands.AddInput(sys.argv[1])
+        if translateUserInputToCommands.IsCommand():
+            command = translateUserInputToCommands.GetCommand()
+            fullUserInput = translateUserInputToCommands.GetUserInputs()
+            try:
+                ledController.CommandExecuted()
+                command.Execute(fullUserInput)
+            except (KeyboardInterrupt, SystemExit):
+                raise
+            except Exception as e:
+                sys.stdout.write(traceback.format_exc())
                 sys.stdout.flush()
+
+        else:
+            sys.stdout.write("Unknown argument: '" + sys.argv[1] + "'\n")
+            sys.stdout.flush()
 
 except Exception as e:
     sys.stdout.write(traceback.format_exc())
