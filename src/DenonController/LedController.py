@@ -42,7 +42,7 @@ class LedController:
         self.UpdateExecuteCounter()
 
     def InputReadBlocking(self):
-        self.OneTimeBlink(self.GreenLed, 0.3)
+        self.OneTimeBlink(self.GreenLed, 0.05)
     
     def CommandExecuted(self):
         self.Execute = self.CommandExecutedBlocking
