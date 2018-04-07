@@ -73,10 +73,11 @@ try:
                 sys.stdout.write("Unknown argument: '" + sys.argv[1] + "'\n")
                 sys.stdout.flush()
 
-    finally:
-        denon.Close()
-        ledController.Close()
 except Exception as e:
     sys.stdout.write(traceback.format_exc())
     sys.stdout.flush()
     raise
+
+finally:
+    denon.Close()
+    ledController.Close()
