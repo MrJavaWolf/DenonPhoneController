@@ -1,15 +1,22 @@
 import sys
 import traceback
+import math
+import time
 
 class MainLoop:
+
+    def __init__(self):
+        self.HeartBeatTimeMs = 7500
 
     def Start(self, userInput, translateUserInputToCommands, ledController):
         isRunning = True
         while isRunning:
+            self.LastHeartBeatTime = int(round(time.time() * 1000))
             sys.stdout.write("Waiting for input... [" + translateUserInputToCommands.GetUserInputs()+"]\n")
             sys.stdout.write("Input: ")
             sys.stdout.flush()
-            input = userInput.GetUserInput()
+            input = self.WaitForUserInput()
+            ledController.InputRead()
             sys.stdout.write(input)
             sys.stdout.write("\n")
             sys.stdout.flush()
@@ -30,3 +37,15 @@ class MainLoop:
                     sys.stdout.write("\n")
                     sys.stdout.flush()
                     
+    def WaitForUserInput(self, ledController):
+        containsInput = False
+        input = ""
+        while containsInput == False:
+            input = userInput.GetUserInput()
+            currentTime = int(round(time.time() * 1000))
+            if currentTime - self.HeartBeatTimeMs > self.LastHeartBeatTime:
+                self.LastHeartBeatTime = currentTime
+                ledController.HeartBeat()
+            if input != "":
+                containsInput = True
+        return input

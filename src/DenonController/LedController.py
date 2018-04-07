@@ -60,12 +60,21 @@ class LedController:
     def HeartBeatBlocking(self):
         self.OneTimeBlink(self.GreenLed, 0.05)
 
-    def Error(self):
-        self.Execute = self.ErrorBlocking
+    def ErrorCode1(self):
+        self.Execute = self.ErrorCode1Blocking
         self.UpdateExecuteCounter()
 
-    def ErrorBlocking(self):
-        self.OneTimeBlink(self.RedLed, 0.5)
+    def ErrorCode1Blocking(self):
+        self.OneTimeBlink(self.RedLed, 0.35)
+
+    def ErrorCode2(self):
+        self.Execute = self.ErrorCode2Blocking
+        self.UpdateExecuteCounter()
+
+    def ErrorCode2Blocking(self):
+        self.OneTimeBlink(self.RedLed, 0.35)
+        time.sleep(0.35)
+        self.OneTimeBlink(self.RedLed, 0.35)
 
     def InvalidCommand(self):
         self.Execute = self.InvalidCommandBlocking

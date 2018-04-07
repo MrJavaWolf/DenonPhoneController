@@ -36,9 +36,9 @@ def GetCommands(denon, ledController):
 try:
     sys.stdout.write("Welcome to JWolf's Denon controls!\n")
     sys.stdout.flush()
-    denon = DenonConnection(Denon_IP, Denon_Port)
     ledController = LedController(Gpio_Mode, Led_Green, Led_Red)
     ledController.SystemStart()
+    denon = DenonConnection(Denon_IP, Denon_Port, ledController.ErrorCode1)
     commands = GetCommands(denon, ledController)
     translateUserInputToCommands = TranslateUserInputToCommands(commands)
 
@@ -46,7 +46,7 @@ try:
         #If there is no commandline arguments, we will start the mainloop and be in
         #an "interactive mode"
         if len(sys.argv) == 1:
-            userI2CInput = UserI2CInput(I2C_Bus_Number, I2C_Device_Address, ledController)
+            userI2CInput = UserI2CInput(I2C_Bus_Number, I2C_Device_Address, ledController.ErrorCode2)
             mainLoop = MainLoop()
             mainLoop.Start(userI2CInput, translateUserInputToCommands, ledController)
 

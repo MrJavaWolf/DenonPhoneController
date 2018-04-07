@@ -2,18 +2,42 @@ import socket
 import DenonCommands
 import time
 
-BUFFER_SIZE = 1024
-    
 class DenonConnection:
 
-    def __init__(self, ip, port):
-        self.denonSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.denonSocket.connect((ip, port))
-        self.denonSocket.settimeout(5)
+    def __init__(self, ip, port, errorCallback):
+        self.Ip = ip
+        self.Port = port
+        self.ErrorCallback = errorCallback
+        self.IsConnected = False
+        self.Connect()
+
+    def Connect(self):
+        while self.IsConnected == False:
+            try:
+                self.denonSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                self.denonSocket.connect((self.Ip, self.Port))
+                self.denonSocket.settimeout(5)
+                self.IsConnected = True
+            except (KeyboardInterrupt, SystemExit):
+                raise
+            except:
+                self.ErrorCallback()
+                time.sleep(5)
 
     def SendMessage(self, message):
-        #Sends the actual message
-        self.denonSocket.send(str.encode(message))       
+        isSend = False
+        while isSend == False:
+            try:
+                #Sends the actual message
+                self.denonSocket.send(str.encode(message))
+                isSend = True
+            except (KeyboardInterrupt, SystemExit):
+                raise
+            except:
+                self.ErrorCallback()
+                time.sleep(5)
+                self.Close()
+                self.Connect()
         #Enforce a 50 ms wait, the Denon will not accept more than 1 commnd
         #every 50 ms
         time.sleep(0.05)
@@ -21,15 +45,21 @@ class DenonConnection:
     def WaitForResponse(self, possibleResponses):
         denonResponseBytes = b''
         while True:    
-            denonResponseBytes += self.denonSocket.recv(BUFFER_SIZE)
+            denonResponseBytes += self.denonSocket.recv(1024)
             denonResponse = denonResponseBytes.decode("ascii")
             for possibleResponse in possibleResponses:
                 if possibleResponse in denonResponse: 
                     return denonResponseBytes
 
     def Close(self):
-        self.denonSocket.close()
-    
+        try:
+            self.denonSocket.close()
+        except (KeyboardInterrupt, SystemExit):
+            raise
+        except:
+            #swallow
+            a = 0 
+
     def SetMasterVolume(self, volume):
         self.SendMessage(DenonCommands.SetVolume(volume))
         self.WaitForResponse(["\r"])

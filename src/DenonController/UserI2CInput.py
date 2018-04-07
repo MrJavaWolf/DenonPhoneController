@@ -6,13 +6,11 @@ import time
 
 class UserI2CInput:
 
-    def __init__(self, I2C_Bus_Number, I2C_Device_Address, ledController):
+    def __init__(self, I2C_Bus_Number, I2C_Device_Address, errorCallback):
         self.I2C_Device_Address = I2C_Device_Address
         self.I2C_Bus_Number = I2C_Bus_Number
-        self.ledController = ledController
+        self.errorCallback = errorCallback
         self.I2C_Bus = smbus.SMBus(I2C_Bus_Number) 
-        self.HeartBeatTimeMs = 7500
-        self.LastHeartBeatTime = int(round(time.time() * 1000))
 
     def GetUserInput(self):
         time.sleep(0.05)
@@ -23,17 +21,11 @@ class UserI2CInput:
                 waitingForClear = False
         
         time.sleep(0.05)
-        waitingForInput = True
-        while waitingForInput:
-            currentTime = int(round(time.time() * 1000))
-            if currentTime - self.HeartBeatTimeMs > self.LastHeartBeatTime:
-                self.LastHeartBeatTime = currentTime
-                self.ledController.HeartBeat()
+        inputMatrix = self.ReadI2CInput()
+        if self.IsInputValid(inputMatrix):
+            return self.InputToString(inputMatrix)
 
-            inputMatrix = self.ReadI2CInput()
-            if self.IsInputValid(inputMatrix):
-                self.ledController.InputRead()
-                return self.InputToString(inputMatrix)
+        return ""
 
     def IsInputValid(self, inputMatrix):
         containsInput = False
@@ -101,7 +93,7 @@ class UserI2CInput:
             except (KeyboardInterrupt, SystemExit):
                 raise
             except:
-                self.ledController.Error()
+                self.errorCallback()
                 time.sleep(3)
 
     def ReadI2CByte(self):
@@ -111,7 +103,7 @@ class UserI2CInput:
             except (KeyboardInterrupt, SystemExit):
                 raise
             except:
-                self.ledController.Error()
+                self.errorCallback()
                 time.sleep(3)
 
 
