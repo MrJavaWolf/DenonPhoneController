@@ -12,14 +12,14 @@ class UserI2CInput:
         self.errorCallback = errorCallback
         self.I2C_Bus = smbus.SMBus(I2C_Bus_Number) 
 
-    def GetUserInput(self):
-        time.sleep(0.05)
+    def PrepareForUserInput(self):
         waitingForClear = True
         while waitingForClear:
             inputMatrix = self.ReadI2CInput()
             if self.IsNothingPressed(inputMatrix):
                 waitingForClear = False
-        
+
+    def GetUserInput(self):
         time.sleep(0.05)
         inputMatrix = self.ReadI2CInput()
         if self.IsInputValid(inputMatrix):

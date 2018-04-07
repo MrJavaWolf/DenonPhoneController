@@ -38,9 +38,11 @@ class MainLoop:
                     sys.stdout.flush()
                     
     def WaitForUserInput(self, userInput, ledController):
+        userInput.PrepareForUserInput()
         containsInput = False
         input = ""
         while containsInput == False:
+            time.sleep(0.05)
             input = userInput.GetUserInput()
             currentTime = int(round(time.time() * 1000))
             if currentTime - self.HeartBeatTimeMs > self.LastHeartBeatTime:
