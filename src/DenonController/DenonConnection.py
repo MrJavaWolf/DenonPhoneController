@@ -2,6 +2,8 @@ import socket
 import DenonCommands
 import time
 import sys
+import traceback
+
 
 class DenonConnection:
 

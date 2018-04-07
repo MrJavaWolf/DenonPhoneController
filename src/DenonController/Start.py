@@ -9,6 +9,8 @@ import RPi.GPIO as GPIO
 from TranslateUserInputToCommands import TranslateUserInputToCommands 
 from Commands import *
 import ptvsd
+import traceback
+
 
 #ptvsd.enable_attach(secret='debug')
 

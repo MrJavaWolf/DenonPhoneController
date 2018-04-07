@@ -3,6 +3,8 @@ import smbus
 import sys
 import math
 import time
+import traceback
+
 
 class UserI2CInput:
 
