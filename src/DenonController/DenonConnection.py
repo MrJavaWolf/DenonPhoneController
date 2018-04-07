@@ -1,6 +1,7 @@
 import socket
 import DenonCommands
 import time
+import sys
 
 class DenonConnection:
 
