@@ -15,7 +15,7 @@ class MainLoop:
             sys.stdout.write("Waiting for input... [" + translateUserInputToCommands.GetUserInputs()+"]\n")
             sys.stdout.write("Input: ")
             sys.stdout.flush()
-            input = self.WaitForUserInput(ledController)
+            input = self.WaitForUserInput(userInput, ledController)
             ledController.InputRead()
             sys.stdout.write(input)
             sys.stdout.write("\n")
