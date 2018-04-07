@@ -92,7 +92,10 @@ class UserI2CInput:
                 return
             except (KeyboardInterrupt, SystemExit):
                 raise
-            except:
+            except Exception as e:
+                sys.stdout.write(traceback.format_exc())
+                sys.stdout.write("\n")
+                sys.stdout.flush()
                 self.errorCallback()
                 time.sleep(3)
 
@@ -102,7 +105,10 @@ class UserI2CInput:
                 return self.I2C_Bus.read_byte(self.I2C_Device_Address)
             except (KeyboardInterrupt, SystemExit):
                 raise
-            except:
+            except Exception as e:
+                sys.stdout.write(traceback.format_exc())
+                sys.stdout.write("\n")
+                sys.stdout.flush()
                 self.errorCallback()
                 time.sleep(3)
 

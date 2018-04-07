@@ -20,7 +20,10 @@ class DenonConnection:
                 self.IsConnected = True
             except (KeyboardInterrupt, SystemExit):
                 raise
-            except:
+            except Exception as e:
+                sys.stdout.write(traceback.format_exc())
+                sys.stdout.write("\n")
+                sys.stdout.flush()
                 self.ErrorCallback()
                 time.sleep(5)
 
@@ -33,7 +36,10 @@ class DenonConnection:
                 isSend = True
             except (KeyboardInterrupt, SystemExit):
                 raise
-            except:
+            except Exception as e:
+                sys.stdout.write(traceback.format_exc())
+                sys.stdout.write("\n")
+                sys.stdout.flush()
                 self.ErrorCallback()
                 time.sleep(5)
                 self.Close()
