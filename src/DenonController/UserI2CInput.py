@@ -22,7 +22,6 @@ class UserI2CInput:
                 waitingForClear = False
 
     def GetUserInput(self):
-        time.sleep(0.05)
         inputMatrix = self.ReadI2CInput()
         if self.IsInputValid(inputMatrix):
             return self.InputToString(inputMatrix)
