@@ -95,7 +95,8 @@ class LedController:
         self.UpdateExecuteCounter()
 
     def SystemStartBlocking(self):
-        self.OneTimeBlink(self.RedLed, 0.7)
-        for i in range(0, 5):
-            self.OneTimeBlink(self.GreenLed, 0.1)
-            time.sleep(0.1)
+        for i in range(0, 2):
+            for j in range(0, 3):
+                self.OneTimeBlink(self.GreenLed, 0.1)
+                time.sleep(0.05)
+            time.sleep(0.25)
