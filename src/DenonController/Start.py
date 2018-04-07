@@ -35,6 +35,8 @@ def GetCommands(denon, ledController):
             MuteCommand.MuteCommand(denon),
             SourceSelectCommand.SourceSelectCommand(denon),
             InvalidCommand.InvalidCommand(ledController)]
+ledController = None
+denon = None
 try:
     sys.stdout.write("Welcome to JWolf's Denon controls!\n")
     sys.stdout.flush()
@@ -78,5 +80,7 @@ except Exception as e:
     raise
 
 finally:
-    denon.Close()
-    ledController.Close()
+    if denon is not None:
+        denon.Close()
+    if ledController is not None:
+        ledController.Close()
