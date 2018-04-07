@@ -37,7 +37,7 @@ class MainLoop:
                     sys.stdout.write("\n")
                     sys.stdout.flush()
                     
-    def WaitForUserInput(self, ledController):
+    def WaitForUserInput(self, userInput, ledController):
         containsInput = False
         input = ""
         while containsInput == False:
