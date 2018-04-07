@@ -65,16 +65,16 @@ class LedController:
         self.UpdateExecuteCounter()
 
     def ErrorCode1Blocking(self):
-        self.OneTimeBlink(self.RedLed, 0.35)
+        self.OneTimeBlink(self.RedLed, 0.1)
 
     def ErrorCode2(self):
         self.Execute = self.ErrorCode2Blocking
         self.UpdateExecuteCounter()
 
     def ErrorCode2Blocking(self):
-        self.OneTimeBlink(self.RedLed, 0.35)
-        time.sleep(0.35)
-        self.OneTimeBlink(self.RedLed, 0.35)
+        self.OneTimeBlink(self.RedLed, 0.1)
+        time.sleep(0.1)
+        self.OneTimeBlink(self.RedLed, 0.1)
 
     def InvalidCommand(self):
         self.Execute = self.InvalidCommandBlocking
