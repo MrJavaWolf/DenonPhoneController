@@ -3,6 +3,7 @@ import DenonCommands
 import time
 import sys
 import traceback
+import urllib.request
 
 
 class DenonConnection:
@@ -29,6 +30,17 @@ class DenonConnection:
                 sys.stdout.flush()
                 self.ErrorCallback()
                 time.sleep(5)
+                self.TryResetDenonsTelnet()
+
+    def TryResetDenonsTelnet(self):
+        try:
+            contents = urllib.request.urlopen("http://"+self.Ip+"/SETUP/NETWORK/CONNECTION/r_network_setting_dhcp.asp").read()
+        except (KeyboardInterrupt, SystemExit):
+            raise
+        except Exception as e:
+            sys.stdout.write(traceback.format_exc())
+            sys.stdout.write("\n")
+            sys.stdout.flush()
 
     def SendMessage(self, message):
         isSend = False
